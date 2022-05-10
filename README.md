@@ -1,7 +1,7 @@
 # MHI-WiFi-Controller
 
 Information how to build, flash, install and configure your MHI WiFi Controller.
-================================================================================
+--------------------------------------------------------------------------------
 
 [How to build your MHI WiFi Controller (Dutch)](/MHI-AC-Ctrl%20-%20Assembly%20instructions%20-%20NL.pdf)
 
