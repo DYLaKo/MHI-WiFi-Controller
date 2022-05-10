@@ -1,0 +1,49 @@
+#####################################################################################################################################################
+## Contains additional sensors provided for the MHI-AC-Ctrl controller software.                                                                   ##
+## Note: Make sure the MQTT topics are correct! If you modified your hostname in the MHI-AC-Ctrl controller software, the topics can be different! ##
+#####################################################################################################################################################
+
+## Shows if the airco is on or off, used to calculate daily running time ##
+binary_sensor:
+  - platform: template
+    sensors:
+      mhi_ac_ctrl_activity_state:
+        friendly_name: "Airco - Activity state"
+        value_template: >-
+          {{ states('sensor.mhi_ac_ctrl_mode') in ['auto', 'dry', 'cool', 'heat', 'fan_only'] }}
+
+sensor:
+  ## Calculate the total airco running time on a day ##
+  - platform: history_stats
+    name: Airco - Running time (daily)
+    entity_id: binary_sensor.mhi_ac_ctrl_activity_state
+    state: 'on'
+    type: time
+    start: "{{ now().replace(hour=0, minute=0, second=0) }}"
+    end: "{{ now().replace(hour=23, minute=59, second=59) }}"
+
+  ##  Count the amount of defrost cycles on a day ##
+  - platform: history_stats
+    name: Airco - Defrost - Amount (daily)
+    entity_id: sensor.mhi_ac_ctrl_operating_data_defrost
+    state: "on"
+    type: count
+    start: "{{ now().replace(hour=0, minute=0, second=0) }}"
+    end: "{{ now().replace(hour=23, minute=59, second=59) }}"
+
+  ## Calculate the total defrost time on a day ##
+  - platform: history_stats
+    name: Airco - Defrost - Total time (daily)
+    entity_id: sensor.mhi_ac_ctrl_operating_data_defrost
+    state: "on"
+    type: time
+    start: "{{ now().replace(hour=0, minute=0, second=0) }}"
+    end: "{{ now().replace(hour=23, minute=59, second=59) }}"
+
+  ## Calculat the airco usage power in Watts
+  - platform: mqtt
+    name: "Airco Keuken vermogen"
+    state_topic: "MHI-AC-Ctrl/OpData/CT"
+    unit_of_measurement: "Watt"
+    value_template: "{{ (value | float * 230) | round(2) }}"
+

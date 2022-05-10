@@ -1,0 +1,173 @@
+#####################################################################################################################################################
+## Contains all the default sensors provided by the MHI-AC-Ctrl controller software.                                                               ##
+## Note: Make sure the MQTT topics are correct! If you modified your hostname in the MHI-AC-Ctrl controller software, the topics can be different! ##
+#####################################################################################################################################################
+
+sensor:
+  ## MHI AC CTRL connection status to broker
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - connected"
+    state_topic: "MHI-AC-Ctrl/connected"
+
+  ## WiFI RSSI /Received Signal Strength in dBm during boot
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - RSSI"
+    state_topic: "MHI-AC-Ctrl/RSSI"
+    unit_of_measurement: "dBm"
+
+  ## Frequency of the SCK pin in Hz during boot
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - fSCK"
+    state_topic: "MHI-AC-Ctrl/fSCK"
+    unit_of_measurement: "Hz"
+
+  ## Frequency of the MOSI pin in Hz during boot
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - fMOSI"
+    state_topic: "MHI-AC-Ctrl/fMOSI"
+    unit_of_measurement: "Hz"
+
+  ## Frequency of the MISO pin in Hz during boot
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - fMISO"
+    state_topic: "MHI-AC-Ctrl/fMISO"
+    unit_of_measurement: "Hz"
+
+  ## Current operation mode
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Mode"
+    state_topic: "MHI-AC-Ctrl/Mode"
+
+  ## Current power mode
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Power"
+    state_topic: "MHI-AC-Ctrl/Power"
+
+  ## Fan level
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Fan"
+    state_topic: "MHI-AC-Ctrl/Fan"
+
+  ## Vanes up/down position
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Vanes"
+    state_topic: "MHI-AC-Ctrl/Vanes"
+
+  ## Room temperature (°C)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Troom"
+    state_topic: "MHI-AC-Ctrl/Troom"
+    unit_of_measurement: "°C"
+
+  ## Target room temperature (°C)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Tsetpoint"
+    state_topic: "MHI-AC-Ctrl/Tsetpoint"
+    unit_of_measurement: "°C"
+
+  ## Errorcode
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Errorcode"
+    state_topic: "MHI-AC-Ctrl/Errorcode"
+    
+  ## Current operation mode
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - Mode"
+    state_topic: "MHI-AC-Ctrl/OpData/Mode"
+
+  ## Set temperature (°C)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - Tsetpoint"
+    state_topic: "MHI-AC-Ctrl/OpData/Tsetpoint"
+    unit_of_measurement: "°C"
+
+  ## Return air sensor temperature (°C)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - RETURN-AIR"
+    state_topic: "MHI-AC-Ctrl/OpData/RETURN-AIR"
+    unit_of_measurement: "°C"
+
+  ## Indoor heat exchanger sensor (on U bend) (°C)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - THI-R1"
+    state_topic: "MHI-AC-Ctrl/OpData/THI-R1"
+    unit_of_measurement: "°C"
+
+  ## Indoor heat exchanger sensor (on Capillary) (°C)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - THI-R2"
+    state_topic: "MHI-AC-Ctrl/OpData/THI-R2"
+    unit_of_measurement: "°C"
+
+  ## Indoor heat exchanger sensor (on suction header) (°C)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - THI-R3"
+    state_topic: "MHI-AC-Ctrl/OpData/THI-R3"
+    unit_of_measurement: "°C"
+
+  ## Indoor unit - Fanspeed
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - IU-FANSPEED"
+    state_topic: "MHI-AC-Ctrl/OpData/IU-FANSPEED"
+
+  ## Outdoor air temperature (°C)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - OUTDOOR"
+    state_topic: "MHI-AC-Ctrl/OpData/OUTDOOR"
+    unit_of_measurement: "°C"
+
+  ## Compressor frequency (Hz)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - COMP"
+    state_topic: "MHI-AC-Ctrl/OpData/COMP"
+    unit_of_measurement: "Hz"
+
+  ## Outdoor unit heat exchanger sensor (°C)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - THO-R1"
+    state_topic: "MHI-AC-Ctrl/OpData/THO-R1"
+    unit_of_measurement: "°C"
+
+  ## Discharge Pipe Temperature (°C)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - TD"
+    state_topic: "MHI-AC-Ctrl/OpData/TD"
+    unit_of_measurement: "°C"
+
+  ## Current (Amp)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - CT"
+    state_topic: "MHI-AC-Ctrl/OpData/CT"
+    unit_of_measurement: "A"
+  
+  ## Protection state number of the compressor
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - PROTECTION-NO"
+    state_topic: "MHI-AC-Ctrl/OpData/PROTECTION-NO"
+
+  ## Outdoor unit fan speed
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - OU-FANSPEED"
+    state_topic: "MHI-AC-Ctrl/OpData/OU-FANSPEED"
+
+  ## Defrost control on/off
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - DEFROST"
+    state_topic: "MHI-AC-Ctrl/OpData/DEFROST"
+
+  ## Total running hours of compressor (Hr)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - TOTAL-COMP-RUN"
+    state_topic: "MHI-AC-Ctrl/OpData/TOTAL-COMP-RUN"
+    unit_of_measurement: "hours"
+
+  ## Pulse rate of the outdoor unit expansion valve EEVC (Pulse)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - OU-EEV1"
+    state_topic: "MHI-AC-Ctrl/OpData/OU-EEV1"
+
+  ## Compressor discharge pipe super heat (°C)
+  - platform: mqtt
+    name: "MHI-AC-Ctrl - Operating Data - TDSH"
+    state_topic: "MHI-AC-Ctrl/OpData/TDSH"
+    unit_of_measurement: "°C"
