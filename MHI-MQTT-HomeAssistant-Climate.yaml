@@ -37,4 +37,4 @@ climate:
     fan_mode_state_topic: "MHI-AC-Ctrl/Fan"
     swing_mode_command_topic: "MHI-AC-Ctrl/set/Vanes"
     swing_mode_state_topic: "MHI-AC-Ctrl/Vanes"
-    current_temperature_topic: "MHI-AC-Ctrl-Woonkamer/Woonkamer/Troom"
+    current_temperature_topic: "MHI-AC-Ctrl/Troom"
