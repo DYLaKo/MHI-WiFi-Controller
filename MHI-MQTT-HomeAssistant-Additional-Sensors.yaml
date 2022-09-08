@@ -2,6 +2,10 @@
 ## Contains additional sensors provided for the MHI-AC-Ctrl controller software.                                                                   ##
 ## Note: Make sure the MQTT topics are correct! If you modified your hostname in the MHI-AC-Ctrl controller software, the topics can be different! ##
 #####################################################################################################################################################
+## Release Notes:                                                                                                                                  ##
+## 2022-09-08 : - Modified the YAML configuration so it matches the new way manually created MQTT sensors must be configured                       ##
+##                since HomeAssistant 2022.09.                                                                                                     ##
+#####################################################################################################################################################
 
 ## Shows if the airco is on or off, used to calculate daily running time ##
 binary_sensor:
@@ -40,10 +44,12 @@ sensor:
     start: "{{ now().replace(hour=0, minute=0, second=0) }}"
     end: "{{ now().replace(hour=23, minute=59, second=59) }}"
 
-  ## Calculat the airco usage power in Watts
-  - platform: mqtt
-    name: "Airco Keuken vermogen"
-    state_topic: "MHI-AC-Ctrl/OpData/CT"
-    unit_of_measurement: "Watt"
-    value_template: "{{ (value | float * 230) | round(2) }}"
+
+mqtt:
+  sensor:
+    ## Calculate the airco usage power in Watts
+    - name: "Airco Keuken vermogen"
+      state_topic: "MHI-AC-Ctrl/OpData/CT"
+      unit_of_measurement: "Watt"
+      value_template: "{{ (value | float * 230) | round(2) }}"
 
