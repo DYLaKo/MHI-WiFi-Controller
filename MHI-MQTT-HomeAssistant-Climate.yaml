@@ -2,39 +2,43 @@
 ## Contains all the climate component provided by the MHI-AC-Ctrl controller software.                                                             ##
 ## Note: Make sure the MQTT topics are correct! If you modified your hostname in the MHI-AC-Ctrl controller software, the topics can be different! ##
 #####################################################################################################################################################
+## Release Notes:                                                                                                                                  ##
+## 2022-09-08 : - Modified the YAML configuration so it matches the new way manually created MQTT sensors must be configured                       ##
+##                since HomeAssistant 2022.09.                                                                                                     ##
+##              - Removed "send_if_off" from configuration, since this is deprecated in HomeAssistant.                                             ##
+#####################################################################################################################################################
 
-climate:
-  - platform: mqtt
-    unique_id: MHI-AC-Ctrl
-    name: MHI-AC-Ctrl
-    send_if_off: true
-    initial: 22
-    min_temp: 18
-    max_temp: 30
-    modes:
-      - "auto"
-      - "dry"
-      - "cool"
-      - "fan_only"
-      - "heat"
-      - "off"
-    swing_modes:
-      - "1"
-      - "2"
-      - "3"
-      - "4"
-      - "swing"
-    fan_modes:
-      - "1"
-      - "2"
-      - "3"
-      - "4"
-    mode_command_topic: "MHI-AC-Ctrl/set/Mode"
-    mode_state_topic: "MHI-AC-Ctrl/Mode"
-    temperature_command_topic: "MHI-AC-Ctrl/set/Tsetpoint"
-    temperature_state_topic: "MHI-AC-Ctrl/Tsetpoint"
-    fan_mode_command_topic: "MHI-AC-Ctrl/set/Fan"
-    fan_mode_state_topic: "MHI-AC-Ctrl/Fan"
-    swing_mode_command_topic: "MHI-AC-Ctrl/set/Vanes"
-    swing_mode_state_topic: "MHI-AC-Ctrl/Vanes"
-    current_temperature_topic: "MHI-AC-Ctrl/Troom"
+mqtt:
+  climate:
+    - unique_id: MHI-AC-Ctrl
+      name: MHI-AC-Ctrl
+      initial: 22
+      min_temp: 18
+      max_temp: 30
+      modes:
+        - "auto"
+        - "dry"
+        - "cool"
+        - "fan_only"
+        - "heat"
+        - "off"
+      swing_modes:
+        - "1"
+        - "2"
+        - "3"
+        - "4"
+        - "swing"
+      fan_modes:
+        - "1"
+        - "2"
+        - "3"
+        - "4"
+      mode_command_topic: "MHI-AC-Ctrl/set/Mode"
+      mode_state_topic: "MHI-AC-Ctrl/Mode"
+      temperature_command_topic: "MHI-AC-Ctrl/set/Tsetpoint"
+      temperature_state_topic: "MHI-AC-Ctrl/Tsetpoint"
+      fan_mode_command_topic: "MHI-AC-Ctrl/set/Fan"
+      fan_mode_state_topic: "MHI-AC-Ctrl/Fan"
+      swing_mode_command_topic: "MHI-AC-Ctrl/set/Vanes"
+      swing_mode_state_topic: "MHI-AC-Ctrl/Vanes"
+      current_temperature_topic: "MHI-AC-Ctrl/Troom"
