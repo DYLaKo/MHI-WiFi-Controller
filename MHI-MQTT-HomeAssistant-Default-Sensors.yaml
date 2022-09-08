@@ -2,172 +2,117 @@
 ## Contains all the default sensors provided by the MHI-AC-Ctrl controller software.                                                               ##
 ## Note: Make sure the MQTT topics are correct! If you modified your hostname in the MHI-AC-Ctrl controller software, the topics can be different! ##
 #####################################################################################################################################################
+## Release Notes:                                                                                                                                  ##
+## 2022-09-08 : - Modified the YAML configuration so it matches the new way manually created MQTT sensors must be configured                       ##
+##                since HomeAssistant 2022.09.                                                                                                     ##
+#####################################################################################################################################################
 
-sensor:
-  ## MHI AC CTRL connection status to broker
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - connected"
-    state_topic: "MHI-AC-Ctrl/connected"
+mqtt:
+  sensor:
+    - name: "MHI-AC-Ctrl - connected"                         ## MHI AC CTRL connection status to broker
+      state_topic: "MHI-AC-Ctrl/connected"
 
-  ## WiFI RSSI /Received Signal Strength in dBm during boot
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - RSSI"
-    state_topic: "MHI-AC-Ctrl/RSSI"
-    unit_of_measurement: "dBm"
+    - name: "MHI-AC-Ctrl - RSSI"                              ## WiFI RSSI /Received Signal Strength in dBm during boot
+      state_topic: "MHI-AC-Ctrl/RSSI"
+      unit_of_measurement: "dBm"
 
-  ## Frequency of the SCK pin in Hz during boot
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - fSCK"
-    state_topic: "MHI-AC-Ctrl/fSCK"
-    unit_of_measurement: "Hz"
-
-  ## Frequency of the MOSI pin in Hz during boot
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - fMOSI"
-    state_topic: "MHI-AC-Ctrl/fMOSI"
-    unit_of_measurement: "Hz"
-
-  ## Frequency of the MISO pin in Hz during boot
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - fMISO"
-    state_topic: "MHI-AC-Ctrl/fMISO"
-    unit_of_measurement: "Hz"
-
-  ## Current operation mode
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Mode"
-    state_topic: "MHI-AC-Ctrl/Mode"
-
-  ## Current power mode
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Power"
-    state_topic: "MHI-AC-Ctrl/Power"
-
-  ## Fan level
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Fan"
-    state_topic: "MHI-AC-Ctrl/Fan"
-
-  ## Vanes up/down position
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Vanes"
-    state_topic: "MHI-AC-Ctrl/Vanes"
-
-  ## Room temperature (°C)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Troom"
-    state_topic: "MHI-AC-Ctrl/Troom"
-    unit_of_measurement: "°C"
-
-  ## Target room temperature (°C)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Tsetpoint"
-    state_topic: "MHI-AC-Ctrl/Tsetpoint"
-    unit_of_measurement: "°C"
-
-  ## Errorcode
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Errorcode"
-    state_topic: "MHI-AC-Ctrl/Errorcode"
-    
-  ## Current operation mode
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - Mode"
-    state_topic: "MHI-AC-Ctrl/OpData/Mode"
-
-  ## Set temperature (°C)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - Tsetpoint"
-    state_topic: "MHI-AC-Ctrl/OpData/Tsetpoint"
-    unit_of_measurement: "°C"
-
-  ## Return air sensor temperature (°C)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - RETURN-AIR"
-    state_topic: "MHI-AC-Ctrl/OpData/RETURN-AIR"
-    unit_of_measurement: "°C"
-
-  ## Indoor heat exchanger sensor (on U bend) (°C)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - THI-R1"
-    state_topic: "MHI-AC-Ctrl/OpData/THI-R1"
-    unit_of_measurement: "°C"
-
-  ## Indoor heat exchanger sensor (on Capillary) (°C)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - THI-R2"
-    state_topic: "MHI-AC-Ctrl/OpData/THI-R2"
-    unit_of_measurement: "°C"
-
-  ## Indoor heat exchanger sensor (on suction header) (°C)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - THI-R3"
-    state_topic: "MHI-AC-Ctrl/OpData/THI-R3"
-    unit_of_measurement: "°C"
-
-  ## Indoor unit - Fanspeed
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - IU-FANSPEED"
-    state_topic: "MHI-AC-Ctrl/OpData/IU-FANSPEED"
-
-  ## Outdoor air temperature (°C)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - OUTDOOR"
-    state_topic: "MHI-AC-Ctrl/OpData/OUTDOOR"
-    unit_of_measurement: "°C"
-
-  ## Compressor frequency (Hz)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - COMP"
-    state_topic: "MHI-AC-Ctrl/OpData/COMP"
-    unit_of_measurement: "Hz"
-
-  ## Outdoor unit heat exchanger sensor (°C)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - THO-R1"
-    state_topic: "MHI-AC-Ctrl/OpData/THO-R1"
-    unit_of_measurement: "°C"
-
-  ## Discharge Pipe Temperature (°C)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - TD"
-    state_topic: "MHI-AC-Ctrl/OpData/TD"
-    unit_of_measurement: "°C"
-
-  ## Current (Amp)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - CT"
-    state_topic: "MHI-AC-Ctrl/OpData/CT"
-    unit_of_measurement: "A"
+    - name: "MHI-AC-Ctrl - fSCK"                              ## Frequency of the SCK pin in Hz during boot
+      state_topic: "MHI-AC-Ctrl/fSCK"
+      unit_of_measurement: "Hz"
   
-  ## Protection state number of the compressor
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - PROTECTION-NO"
-    state_topic: "MHI-AC-Ctrl/OpData/PROTECTION-NO"
+    - name: "MHI-AC-Ctrl - fMOSI"                             ## Frequency of the MOSI pin in Hz during boot
+      state_topic: "MHI-AC-Ctrl/fMOSI"
+      unit_of_measurement: "Hz"
 
-  ## Outdoor unit fan speed
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - OU-FANSPEED"
-    state_topic: "MHI-AC-Ctrl/OpData/OU-FANSPEED"
+    - name: "MHI-AC-Ctrl - fMISO"                             ## Frequency of the MISO pin in Hz during boot
+      state_topic: "MHI-AC-Ctrl/fMISO"
+      unit_of_measurement: "Hz"
 
-  ## Defrost control on/off
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - DEFROST"
-    state_topic: "MHI-AC-Ctrl/OpData/DEFROST"
+    - name: "MHI-AC-Ctrl - Mode"                              ## Current operation mode
+      state_topic: "MHI-AC-Ctrl/Mode"
 
-  ## Total running hours of compressor (Hr)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - TOTAL-COMP-RUN"
-    state_topic: "MHI-AC-Ctrl/OpData/TOTAL-COMP-RUN"
-    unit_of_measurement: "hours"
+    - name: "MHI-AC-Ctrl - Power"                             ## Current power mode
+      state_topic: "MHI-AC-Ctrl/Power"
 
-  ## Pulse rate of the outdoor unit expansion valve EEVC (Pulse)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - OU-EEV1"
-    state_topic: "MHI-AC-Ctrl/OpData/OU-EEV1"
+    - name: "MHI-AC-Ctrl - Fan"                               ## Fan level
+      state_topic: "MHI-AC-Ctrl/Fan"
 
-  ## Compressor discharge pipe super heat (°C)
-  - platform: mqtt
-    name: "MHI-AC-Ctrl - Operating Data - TDSH"
-    state_topic: "MHI-AC-Ctrl/OpData/TDSH"
-    unit_of_measurement: "°C"
+    - name: "MHI-AC-Ctrl - Vanes"                             ## Vanes up/down position
+      state_topic: "MHI-AC-Ctrl/Vanes"
+
+    - name: "MHI-AC-Ctrl - Troom"                             ## Room temperature (°C)
+      state_topic: "MHI-AC-Ctrl/Troom"
+      unit_of_measurement: "°C"
+
+    - name: "MHI-AC-Ctrl - Tsetpoint"                         ## Target room temperature (°C)
+      state_topic: "MHI-AC-Ctrl/Tsetpoint"
+      unit_of_measurement: "°C"
+
+    - name: "MHI-AC-Ctrl - Errorcode"                         ## Errorcode
+      state_topic: "MHI-AC-Ctrl/Errorcode"
+    
+    - name: "MHI-AC-Ctrl - Operating Data - Mode"             ## Current operation mode
+      state_topic: "MHI-AC-Ctrl/OpData/Mode"
+
+    - name: "MHI-AC-Ctrl - Operating Data - Tsetpoint"        ## Set temperature (°C)
+      state_topic: "MHI-AC-Ctrl/OpData/Tsetpoint"
+      unit_of_measurement: "°C"
+
+    - name: "MHI-AC-Ctrl - Operating Data - RETURN-AIR"       ## Return air sensor temperature (°C)
+      state_topic: "MHI-AC-Ctrl/OpData/RETURN-AIR"
+      unit_of_measurement: "°C"
+
+    - name: "MHI-AC-Ctrl - Operating Data - THI-R1"           ## Indoor heat exchanger sensor (on U bend) (°C)
+      state_topic: "MHI-AC-Ctrl/OpData/THI-R1"
+      unit_of_measurement: "°C"
+
+    - name: "MHI-AC-Ctrl - Operating Data - THI-R2"           ## Indoor heat exchanger sensor (on Capillary) (°C)
+      state_topic: "MHI-AC-Ctrl/OpData/THI-R2"
+      unit_of_measurement: "°C"
+
+    - name: "MHI-AC-Ctrl - Operating Data - THI-R3"           ## Indoor heat exchanger sensor (on suction header) (°C)
+      state_topic: "MHI-AC-Ctrl/OpData/THI-R3"
+      unit_of_measurement: "°C"
+
+    - name: "MHI-AC-Ctrl - Operating Data - IU-FANSPEED"      ## Indoor unit - Fanspeed
+      state_topic: "MHI-AC-Ctrl/OpData/IU-FANSPEED"
+
+    - name: "MHI-AC-Ctrl - Operating Data - OUTDOOR"          ## Outdoor air temperature (°C)
+      state_topic: "MHI-AC-Ctrl/OpData/OUTDOOR"
+      unit_of_measurement: "°C"
+
+    - name: "MHI-AC-Ctrl - Operating Data - COMP"             ## Compressor frequency (Hz)
+      state_topic: "MHI-AC-Ctrl/OpData/COMP"
+      unit_of_measurement: "Hz"
+
+    - name: "MHI-AC-Ctrl - Operating Data - THO-R1"           ## Outdoor unit heat exchanger sensor (°C)
+      state_topic: "MHI-AC-Ctrl/OpData/THO-R1"
+      unit_of_measurement: "°C"
+
+    - name: "MHI-AC-Ctrl - Operating Data - TD"               ## Discharge Pipe Temperature (°C)
+      state_topic: "MHI-AC-Ctrl/OpData/TD"
+      unit_of_measurement: "°C"
+
+    - name: "MHI-AC-Ctrl - Operating Data - CT"               ## Current (Amp)
+      state_topic: "MHI-AC-Ctrl/OpData/CT"
+      unit_of_measurement: "A"
+  
+    - name: "MHI-AC-Ctrl - Operating Data - PROTECTION-NO"    ## Protection state number of the compressor
+      state_topic: "MHI-AC-Ctrl/OpData/PROTECTION-NO"
+
+    - name: "MHI-AC-Ctrl - Operating Data - OU-FANSPEED"      ## Outdoor unit fan speed
+      state_topic: "MHI-AC-Ctrl/OpData/OU-FANSPEED"
+
+    - name: "MHI-AC-Ctrl - Operating Data - DEFROST"          ## Defrost control on/off
+      state_topic: "MHI-AC-Ctrl/OpData/DEFROST"
+
+    - name: "MHI-AC-Ctrl - Operating Data - TOTAL-COMP-RUN"   ## Total running hours of compressor (Hr)
+      state_topic: "MHI-AC-Ctrl/OpData/TOTAL-COMP-RUN"
+      unit_of_measurement: "hours"
+
+    - name: "MHI-AC-Ctrl - Operating Data - OU-EEV1"          ## Pulse rate of the outdoor unit expansion valve EEVC (Pulse)
+      state_topic: "MHI-AC-Ctrl/OpData/OU-EEV1"
+
+    - name: "MHI-AC-Ctrl - Operating Data - TDSH"             ## Compressor discharge pipe super heat (°C)
+      state_topic: "MHI-AC-Ctrl/OpData/TDSH"
+      unit_of_measurement: "°C"
